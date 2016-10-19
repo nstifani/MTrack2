@@ -258,7 +258,7 @@ public class MTrack2_ implements PlugInFilter, Measurements  {
 			List bTrack=(ArrayList) iT.next();
 			if (bTrack.size() >= minTrackLength) {
 				if (frameCount <= maxColumns)
-					strHeadings += "\tX" + frameCount + "\tY" + frameCount +"\tFlag" + frameCount;
+					strHeadings += ",X" + frameCount + ",Y" + frameCount +",Flag" + frameCount;
 				frameCount++;
 			}
 		}
@@ -316,11 +316,11 @@ public class MTrack2_ implements PlugInFilter, Measurements  {
 											flag="*";
 										else
 											flag=" ";
-										strLine+="\t" + aParticle.x + "\t" + aParticle.y + "\t" + flag;
+										strLine+="," + aParticle.x + "," + aParticle.y + "," + flag;
 									}
 								}
 								if (!particleFound)
-									strLine+="\t \t \t ";
+									strLine+=", , , ";
 							}
 						}
 					}
@@ -359,11 +359,11 @@ public class MTrack2_ implements PlugInFilter, Measurements  {
 												flag="*";
 											else
 												flag=" ";
-											strLine+="\t" + aParticle.x + "\t" + aParticle.y + "\t" + flag;
+											strLine+="," + aParticle.x + "," + aParticle.y + "," + flag;
 										}
 									}
 									if (!particleFound)
-										strLine+="\t \t \t ";
+										strLine+=", , , ";
 								}
 							}
 						}
@@ -396,9 +396,9 @@ public class MTrack2_ implements PlugInFilter, Measurements  {
 						}
 					}
 					dos.write("\n");
-					dos.write("Track \tLength\tDistance traveled\tNr of Frames\n",0,45);
+					dos.write("Track ,Length,Distance traveled,tNr of Frames,",0,45);
 					for (int i=0; i<displayTrackNr; i++) {
-						String str = "" + (i+1) + "\t" + (float)lengths[i] + "\t" + (float)distances[i] + "\t" + (int)frames[i];
+						String str = "" + (i+1) + "," + (float)lengths[i] + "," + (float)distances[i] + "," + (int)frames[i];
 						dos.write(str+"\n",0,str.length()+1);
 					}
 				}
@@ -485,9 +485,9 @@ public class MTrack2_ implements PlugInFilter, Measurements  {
 				}
 			}
 			IJ.write("");
-			IJ.write("Track \tLength\tDistance traveled\tNr of Frames");
+			IJ.write("Track ,Length,Distance traveled,Nr of Frames");
 			for (int i=0; i<displayTrackNr; i++) {
-				String str = "" + (i+1) + ":\t" + (float)lengths[i] + "\t" + (float)distances[i] + "\t" + (int)frames[i];
+				String str = "" + (i+1) + ":," + (float)lengths[i] + "," + (float)distances[i] + "," + (int)frames[i];
 				IJ.write(str);
 			}
 		}
